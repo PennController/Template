@@ -34,7 +34,8 @@ PennController.Template( "words" ,
             .start()
             .wait()
         ,
-        newAudio(row.Prime)
+        newAudio("prime", row.Prime)
+            .settings.log("play","end")     // Logging when it starts and ends playing
             .play()
             .wait()
         ,
@@ -42,8 +43,9 @@ PennController.Template( "words" ,
             .print()
         ,
         newKey("answerPrime", "FJ")
-            .settings.log()
+            .settings.log("all")            // Empty parameter (defaulting to "wait") bugs
             .wait()
+            .settings.disable()             // Prevents conflicts with answerTarget
         ,
         getText("Instructions")
             .remove()
@@ -52,7 +54,8 @@ PennController.Template( "words" ,
             .start()
             .wait()
         ,
-        newAudio(row.Target)
+        newAudio("target", row.Target)
+            .settings.log("play","end")     // Logging when it starts and ends playing
             .play()
             .wait()
         ,
@@ -60,7 +63,7 @@ PennController.Template( "words" ,
             .print()
         ,
         newKey("answerTarget", "FJ")
-            .settings.log()
+            .settings.log("all")            // Empty parameter (defaulting to "wait") bugs
             .wait()
         ,
         newTimer(row.PostTargetISI)
