@@ -3,7 +3,17 @@ PennController.ResetPrefix(null);
 
 PennController.AddHost("https://raw.githubusercontent.com/PennController/Template/PrimedLexical/distant_resources/")
 
-PennController.AddTable("words", "https://docs.google.com/spreadsheets/d/e/2PACX-1vQv6XOt7DJjBF96JrGgr5p9cZISZsEP3aTt5ARDzKzwVBZcKkkGHyZn3xn0vMID7kzkeCT2lK51FwNv/pub?gid=0&single=true&output=csv")
+PennController.AddTable("words", 
+`Prime	Target	PrePrimeISI	PrimeToTargetISI	PostTargetISI
+beast.mp3	beat.mp3	200	100	200
+beat.mp3	camp.mp3	200	100	200
+camp.mp3	dit.mp3	200	100	200
+dit.mp3	duck.mp3	200	100	200
+duck.mp3	face.mp3	200	100	200
+face.mp3	foon.mp3	200	100	200
+foon.mp3	fout.mp3	200	100	200
+fout.mp3	beast.mp3	200	100	200`
+)
 
 PennController.Sequence( "welcome" , randomize("test") , "send" , "final" )
 
@@ -20,28 +30,47 @@ PennController( "welcome" ,
 
 PennController.Template( "words" , 
     row => PennController( "test" ,
-        newTimer(200)
+        newTimer(row.PrePrimeISI)
             .start()
             .wait()
         ,
-        newAudio(row.Filename)
+        newAudio(row.Prime)
             .play()
             .wait()
         ,
-        newText("Press F if what you heard is a word, J otherwise")
+        newText("Instructions", "Press F if what you heard is a word, J otherwise")
             .print()
         ,
-        newKey("answer", "FJ")
+        newKey("answerPrime", "FJ")
             .settings.log()
             .wait()
         ,
-        newTimer(200)
+        getText("Instructions")
+            .remove()
+        ,
+        newTimer(row.PrimeToTargetISI)
             .start()
             .wait()
+        ,
+        newAudio(row.Target)
+            .play()
+            .wait()
+        ,
+        getText("Instructions")
+            .print()
+        ,
+        newKey("answerTarget", "FJ")
+            .settings.log()
+            .wait()
+        ,
+        newTimer(row.PostTargetISI)
+            .start()
+            .wait()
+        
     )
     .log( "ID" , PennController.GetURLParameter("id") )
-    .log("file"   , row.Filename )
-    .log("isWord" , row.Word     )
+    .log("Prime"  , row.Prime  )
+    .log("Target" , row.Target )
 )
 
 
