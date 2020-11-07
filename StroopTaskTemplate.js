@@ -18,7 +18,7 @@ newTrial("instructions",
     ,
     newText("instructions-2", "<p>In this experiment, you will see a colored word.</p>")
     ,
-    newText("instructions-3", "<b>Your task is to evaluate if the coloring is consistent. For example, if the word 'green' is of green color, and if the color of that text is green, it is consistent. Otherwise, it is inconsistent.</b>")
+    newText("instructions-3", "<b>Your task is to evaluate if the coloring is consistent. For example, if the word 'green' is of green color, it is consistent. Otherwise, it is inconsistent.</b>")
     ,
     newText("instructions-4", "<p>Press the <b>T</b> key if the coloring is consistent.<br>Press the <b>F</b> key if the coloring is inconsistent.</p>")
     ,
