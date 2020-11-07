@@ -1,6 +1,4 @@
-
-        .color(row.FontColor)
-        .center()// This is the Stroop Test template
+// This is the Stroop Test template
 
 // Remove command prefix
 PennController.ResetPrefix(null)
@@ -20,7 +18,7 @@ newTrial("instructions",
     ,
     newText("instructions-3", "<b>Your task is to evaluate if the coloring is consistent. For example, if the word 'green' is of green color, it is consistent. Otherwise, it is inconsistent.</b>")
     ,
-    newText("instructions-4", "<p>Press the <b>T</b> key if the coloring is consistent.<br>Press the <b>F</b> key if the coloring is inconsistent.</p>")
+    newText("instructions-4", "<p>Press the <b>T</b> key if the coloring is consistent.<br>Press the <b>F</b> key if the coloring is inconsistent..</p>")
     ,
     newButton("wait", "Click to start the experiment")
         .center()
@@ -31,9 +29,11 @@ newTrial("instructions",
 
 
 // Experimental trial
-Template ("StroopTable.csv",
+Template ("myTable.csv",
 row => newTrial("experimental-trial",
     newText("word", row.Word)
+        .color(row.FontColor)
+        .center()
         .css("font-size", "100px")
         .print()
     ,
