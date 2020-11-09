@@ -4,7 +4,7 @@
 PennController.ResetPrefix(null)
 
 // Turn off debugger
-DebugOff()
+// DebugOff()
 
 // Instructions
 newTrial("instructions",
@@ -29,7 +29,7 @@ newTrial("instructions",
 
 
 // Experimental trial
-Template ("myTable.csv",
+Template ("StroopTable.csv",
 row => newTrial("experimental-trial",
     newText("word", row.Word)
         .color(row.FontColor)
