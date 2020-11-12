@@ -6,6 +6,8 @@ PennController.ResetPrefix(null)
 // Turn off debugger
 // DebugOff()
 
+Sequence("instructions","learning-phase","guessing-phase",randomize("guessing-phase-start"),"end")
+
 // Instructions
 newTrial("instructions",
     defaultText
@@ -100,15 +102,15 @@ newTrial("guessing-phase",
     ,
     newText("emptyrow","<p></p>")
     ,
-    newTextInput("loggedword1").size("100px")
+    newText("instructions-3","First word is: ")
+    ,
+    newText("loggedword1", row.word1).size("100px").bold()
     ,
     newText("emptyrow","<p></p>")
     ,
     newTextInput("loggedword2").size("100px")
     ,
     newCanvas("Canvas", 600, 320)
-        .add( 0,     0, newText("<b>Input first word:</b>"))
-        .add( 400,   0, getTextInput("loggedword1").log())
         .add( 0,    40, newText("<b>Input second word:</b>"))
         .add( 400,  40, getTextInput("loggedword2").log())
         .print()
@@ -123,8 +125,7 @@ newTrial("guessing-phase",
     newButton("Next") 
         .center()
         .print()
-        .wait( getTextInput("loggedword1").test.text(/.+/)
-            .and(getTextInput("loggedword2").test.text(/.+/))
+        .wait( getTextInput("loggedword2").test.text(/.+/)
             .failure( 
                 getText("Warning").hidden()
                 ,
@@ -134,16 +135,13 @@ newTrial("guessing-phase",
             )
         )
     ,
-    newVar("loggedword1").global().set( getTextInput("loggedword1") )
-    ,
     newVar("loggedword2").global().set( getTextInput("loggedword2") )
 )
-.log("loggedword1", getVar("loggedword1"))
 .log("loggedword2", getVar("loggedword2"))
 .setOption("countsForProgressBar", false)
 .setOption("hideProgressBar", true))
 
-newTrial(
+newTrial("end",
     newText("Thank you for your participation!")
         .center()
         .print()
