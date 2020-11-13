@@ -1,4 +1,4 @@
-// This is the Stroop Test template
+/ This is the Stroop Test template
 
 // Remove command prefix
 PennController.ResetPrefix(null)
@@ -6,7 +6,7 @@ PennController.ResetPrefix(null)
 // Turn off debugger
 // DebugOff()
 
-Sequence("instructions","learning-phase","guessing-phase",randomize("guessing-phase-start"),"end")
+Sequence("instructions","learning-phase","guessing-phase",randomize("guessing-phase-start"), SendResults(), "end")
 
 // Instructions
 newTrial("instructions",
@@ -134,12 +134,11 @@ newTrial("guessing-phase",
                 getText("Warning").visible() 
             )
         )
-    ,
-    newVar("loggedword2").global().set( getTextInput("loggedword2") )
+        ,
+    newVar("loggedword2").global().set( getTextInput("loggedword2"))
 )
 .log("loggedword2", getVar("loggedword2"))
-.setOption("countsForProgressBar", false)
-.setOption("hideProgressBar", true))
+.log("word1", row.word1))
 
 newTrial("end",
     newText("Thank you for your participation!")
