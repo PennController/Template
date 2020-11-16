@@ -6,6 +6,7 @@ PennController.ResetPrefix(null)
 // Turn off debugger
 // DebugOff()
 
+// Indicate sequence of the events / order of how methods are executed, where we randomize the order in which words to guess appear in guessing phase
 Sequence("instructions","learning-phase","guessing-phase",randomize("guessing-phase-start"), SendResults(), "end")
 
 // Instructions
@@ -44,7 +45,7 @@ newTrial("instructions",
         .set( getTextInput("ID") )
 )
 
-// Learning phase
+// Learning phase, inserting pairs of words from WordsTable
 
 Template ("WordsTable.csv",
 row => newTrial("learning-phase",
@@ -88,6 +89,9 @@ newTrial("guessing-phase",
         .print()
         .wait()
 )
+
+// Guessing phase, user inputs / types in the word that should be matching; result file logs both the word inputted and the word that is shown on the user's desktop
+
 
  Template ("WordsTable.csv", 
   row =>  newTrial("guessing-phase-start",
