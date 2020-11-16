@@ -28,7 +28,7 @@ newTrial("instructions",
 
 
 
-// Experimental trial
+// Experimental trial, for each word from Strooptable, user can press T or F letter on their keyboard to indicate whether the color matches the word
 Template ("StroopTable.csv",
 row => newTrial("experimental-trial",
     newText("word", row.Word)
