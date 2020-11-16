@@ -6,6 +6,7 @@ PennController.ResetPrefix(null)
 // Turn off debugger
 // DebugOff()
 
+// Initialize sequence/order in which methods will be executed, where we send results after the task is done before the end
 Sequence("instructions", "instructions2", SendResults(), "end")
 
 // Instructions
@@ -41,6 +42,8 @@ newTrial("instructions",
         .global()
         .set( getTextInput("ID") )
 )
+
+// Sentences to be read to the user, by pressing the button 'Next Sentence' user passes to the next sentence. Feel free to add your own sentences.
 
 newTrial( "instructions2",
     newText("instructions", "Click on the button below to start reading. Click spacebar to proceed to the next word.")
@@ -80,7 +83,7 @@ newTrial( "instructions2",
 
 
 newTrial("end",
-    newText("Thank you for your participation!")
+    newText("Thank you for your participation!")https://github.com/PennController/Template/security
         .center()
         .print()
     ,
