@@ -1,0 +1,137 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8"></head><body><div id="Instructions">
+  <p>Now we are going to play a game. These animals here are at a racing carnival. There are going to be two races every day,
+     one in the morning, and one in the afternoon. I'm going to show you a picture of the morning race, and tell you what happened in it.
+     Then, I'll tell you what happened in the afternoon race, and show you two pictures. One of the pictures will be visible,
+     and the other one will be covered. Only one of these pictures will show what happened in the afternoon race,
+     and you have to decide which picture you think I am talking about, the visible picture or the covered picture.
+  </p>
+  
+  <p>If one of the animals below looks unfamiliar, you can move your mouse over the picture to see its name.</p>
+
+  <p>Let's practice what you need to do so that you can try out how it works!
+     Simply show me which picture you think I'm talking about by pressing '<span style="font-weight: bold;">F</span>'
+     for the left picture or '<span style="font-weight: bold;">J</span>' for the right picture.
+  </p>
+
+  <p style="text-align:center;">
+    <img src="http://files.lab.florianschwarz.net/ibexfiles/NoWin/Pictures/animals.png" usemap="#map1" />
+    <map id="map1" name="map1">
+      <!-- <area href="" shape="rect" coords="5,5,45,40" title="Bear" /> -->
+      <area shape="rect" coords="5,5,45,40" title="Bear" />
+      <area shape="rect" coords="50,5,90,40" title="Tiger" />
+      <area shape="rect" coords="95,5,135,40" title="Lion" />
+       <area shape="rect" coords="140,5,180,40" title="Raccoon" />
+       <area shape="rect" coords="185,5,225,40" title="Pig" />
+       <area shape="rect" coords="230,5,270,40" title="Zebra" />
+       <area shape="rect" coords="275,5,315,40" title="Elephant" />
+      
+       <area shape="rect" coords="5,60,45,95" title="Mouse" />
+       <area shape="rect" coords="50,60,90,95" title="Kangaroo" />
+       <area shape="rect" coords="95,60,135,95" title="Monkey" />
+       <area shape="rect" coords="140,60,180,95" title="Koala" />
+       <area shape="rect" coords="185,60,225,95" title="Hippo" />
+       <area shape="rect" coords="230,60,270,95" title="Rabbit" />
+       <area shape="rect" coords="275,60,315,95" title="Dog" />
+      
+       <area shape="rect" coords="5,115,45,150" title="Fox" />
+       <area shape="rect" coords="50,115,90,150" title="Deer" />
+       <area shape="rect" coords="95,115,140,150" title="Donkey" />
+       <area shape="rect" coords="150,115,190,150" title="Owl" />
+       <area shape="rect" coords="195,115,235,150" title="Frog" />
+       <area shape="rect" coords="240,115,280,150" title="Giraffe" />
+       <area shape="rect" coords="285,115,325,150" title="Cat" />
+      
+       <area shape="rect" coords="150,170,190,205" title="Panda" />
+    </map>
+  </p>
+  
+  
+</div>
+     
+   <!--
+  
+<script type="text/javascript">
+//<![CDATA[
+  
+  
+  var filesToLoad = [], pending = [], total = 0, loaded = 0;
+  var p = $(document.createElement("p")).html("Please wait while the resources are being loaded...")
+                                        .css({"text-color": "grey", "font-style": "italic"});
+  $(".Message-continue-link").css("display","none");
+  $("#Instructions").append(p);
+  
+  setTimeout(function () {
+    if (filesToLoad.length > 0)
+      $(".Message-continue-link").css("display","none");
+  }, 100);
+
+  
+function loadFile() {  
+  var file;
+  if (filesToLoad.length)
+    file = filesToLoad.pop();
+  else if (pending.length)
+    file = pending.shift();
+  else {
+    $(".Message-continue-link").css("display","block");
+    p.css("display","none");
+    clearInterval(interval);
+    return;
+  }
+  var ext = file.split(".").pop();
+  var id = pending.indexOf(file);
+  if (ext.toLowerCase() == "png") {
+        if (id < 0) pending.push(file);
+        var img = new Image();
+        (function (a) { img.onload = function() { isAppLoaded(a); }; }(file));
+        (function (a) { img.onerror = function() { console.log("Error loading file "+a); }; }(file));
+        img.src = file;
+  }
+  else if (ext.toLowerCase() == "wav") {
+        if (id < 0) pending.push(file);
+        var audio = new Audio();
+        (function (a) { audio.addEventListener('canplaythrough', function() { isAppLoaded(a); }, false); }(file));
+        (function (a) { audio.addEventListener('error', function() { console.log("Error loading file "+a); }, false); }(file));
+        audio.src = file;
+  }
+  else console.log("Exension error with file "+file);
+}
+
+
+function isAppLoaded(file)
+{
+  var id = pending.indexOf(file);
+  if (id<0) return;
+  loaded = loaded + 1;
+  pending.splice(id,1);
+  if (filesToLoad.length || pending.length)
+    loadFile();
+  else {
+      $(".Message-continue-link").css("display","block");
+      p.css("display","none");
+      clearInterval(interval);
+  }
+}  
+    var colnames = data[0]
+    var groups = {};
+
+    // Going through Data
+    for (i in data){
+        if (i == 0) continue; // ignore the first line (colnames)
+        var row = {};
+        for (n in data[i]) { row[colnames[n]] = data[i][n]; }
+        if (row.reversed == reversed) {
+          filesToLoad.push("http://files.lab.florianschwarz.net/ibexfiles/NoWin/Pictures/"+row.ContextPicture);
+          filesToLoad.push("http://files.lab.florianschwarz.net/ibexfiles/NoWin/Pictures/"+row.TargetPicture);
+          filesToLoad.push("http://files.lab.florianschwarz.net/ibexfiles/NoWin/Pictures/"+row.CoveredPicture);
+        }
+    }
+  
+    interval = setInterval(loadFile, 100);
+  
+//]]>
+</script>
+-->
+  
+</body></html>
