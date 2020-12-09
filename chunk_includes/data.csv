@@ -1,0 +1,5 @@
+group,preamble,target,posttarget,time1,time2,word1,word2
+1,Item5_preamble.wav,Item5_targetSentence.wav,Item5_postTarget.wav,12891,2788,S&UumlLGEN,PAAR
+2,Item5_preamble.wav,Item5_targetSentence.wav,Item5_postTarget.wav,12891,2788,S&UumlLGEN,TANZ
+1,Item6_preamble.wav,Item6_targetSentence.wav,Item6_postTarget.wav,38590,4557,BERLINGEN,HOFFNUNG
+2,Item6_preamble.wav,Item6_targetSentence.wav,Item6_postTarget.wav,38590,4557,BERLINGEN,GESCH&AumlFT
