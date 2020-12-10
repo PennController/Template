@@ -21,57 +21,62 @@ newTrial( "welcome" ,
 
 Template( "data.csv" , 
     row => PennController( "test" ,
+        defaultText.center().print()
+        ,
+        newTimer(row.time1).callback(
+            newText("word1",row.word1)
+            ,
+            newText("Instructions", "Press F if what you heard is a word, J otherwise")
+            ,
+            newKey("answerPrime", "FJ").log().wait()
+            ,
+            getText("word1").remove()
+            ,
+            getText("Instructions").remove()
+        ).start()
+        ,
         newAudio("preamble", row.preamble)
-            .settings.log("play","end")     // Logging when it starts and ends playing
+            .log("play","end")     // Logging when it starts and ends playing
             .play()
-        ,
-        newTimer(row.time1)
-            .start()
             .wait()
         ,
-        newText("word1",row.word1)
-            .center()
-            .print()
+        getText("Instructions").remove()
         ,
-        newText("Instructions", "Press F if what you heard is a word, J otherwise")
-            .center()
-            .print()
+        getText("word1").remove()
         ,
-        newKey("answerPrime", "FJ")
-            .settings.log("all")            // Empty parameter (defaulting to "wait") bugs
-            .wait()
-            .settings.disable()             // Prevents conflicts with answerTarget
+        getKey("answerPrime").disable()
         ,
-        getText("Instructions")
-            .remove()
-        ,
-        getText("word1")
-            .remove()
+        newTimer(row.time2).callback(
+            newText("word2",row.word2)
+            ,
+            getText("Instructions").print()
+            ,
+            newKey("answerTarget", "FJ").log().wait()
+            ,
+            getText("word2").remove()
+            ,
+            getText("Instructions").remove()
+        ).start()
         ,
         newAudio("target", row.target)
-            .settings.log("play","end")     // Logging when it starts and ends playing
+            .log("play","end")     // Logging when it starts and ends playing
             .play()
-        ,
-        newTimer(row.time2)
-            .start()
             .wait()
         ,
-        newText("word1",row.word2)
-            .center()
-            .print()
+        getText("word2").remove()
         ,
-        getText("Instructions")
-            .center()
-            .print()
+        getText("Instructions").remove()
         ,
-        newKey("answerTarget", "FJ")
-            .settings.log("all")            // Empty parameter (defaulting to "wait") bugs
-            .wait()
+        getKey("answerTarget").disable()
         ,
         newAudio("post_target", row.posttarget)
-            .settings.log("play","end")     // Logging when it starts and ends playing
+            .log("play","end")     // Logging when it starts and ends playing
             .play()
             .wait()
+        ,
+        newText("Press SPACE to continue")
+        ,
+        newKey(" ").wait()
     )
     .log( "ID" , PennController.GetURLParameter("id") )
     .log( "Group", row.group)
