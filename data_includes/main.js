@@ -5,11 +5,11 @@ Sequence( "welcome" , randomize("test") , "send" , "final" )
 // Welcome screen and logging user's ID
 
 newTrial( "welcome" ,
-    newText("In this experiment you will have to decide if the visuals shown on screen are the words.")
+    newText("In this experiment you will indicate whether what you see on the page is a word or not.")
         .center()
         .print()
     ,
-    newText("Press F for true, and J for false if visual is a word.")
+    newText("Press F if what you see is a word, or J if it is not a word.")
         .center()
         .print()
     ,
@@ -23,21 +23,19 @@ newTrial( "welcome" ,
 
 // Executing experiment from list1.csv table, where participants are divided into two groups
 
-Template( "list1.csv" , 
-    row => PennController( "test" ,
+Template( "list.csv" , 
+    row => newTrial( "test" ,
         defaultText.center().print()
         ,
-        newText("Instructions", "Press F if what you heard is a word, J otherwise")
-        ,
         // Mask, shown on screen for 500ms
-        newText("mask","######").print()
+        newText("mask","######")
         ,
         newTimer(500).start().wait()
         ,                       
         getText("mask").remove()
         ,
         // Prime, shown on screen for 42ms
-        newText("prime",row.prime).print()
+        newText("prime",row.prime)
         ,
         newTimer(42).start().wait()      
         ,
@@ -46,7 +44,7 @@ Template( "list1.csv" ,
         // Target, shown on screen until F or J is pressed
         newText("target",row.target)
         ,
-        getText("Instructions").print()
+        newText("Instructions", "Press F if what you see is a word, J otherwise")
         ,
         newKey("answerTarget", "FJ").log().wait()
         ,
@@ -76,7 +74,7 @@ newTrial ( "final" ,
     newText("Thank you for taking this experiment!")
         .print()
     ,
-    newTimer(1)
-        .wait()
+    // Stay on this page forever
+    newButton().wait()
 )
 .setOption("countsForProgressBar", false)
