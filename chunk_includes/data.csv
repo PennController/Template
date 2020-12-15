@@ -1,18 +1,9 @@
-firstaudio,secondaudio,firstimage,secondimage
-tst_exi_tf_1_con.mp3,tst_exi_tf_1_tar.mp3,tst_exi_tf_1_con.png,coveredpicture.png
-ctl_none_t_1_con.mp3,ctl_none_t_1_tar.mp3,ctl_none_t_1_con.png,coveredpicture.png
-ctl_nwin_f_2_con.mp3,ctl_nwin_f_2_tar.mp3,ctl_nwin_f_2_con.png,coveredpicture.png
-tst_exi_tf_4_con.mp3,tst_exi_tf_4_tar.mp3,tst_exi_tf_4_con.png,coveredpicture.png
-ctl_nwin_t_2_con.mp3,ctl_nwin_t_2_tar.mp3,ctl_nwin_t_2_con.png,coveredpicture.png
-ctl_none_f_1_con.mp3,ctl_none_f_1_tar.mp3,ctl_none_f_1_con.png,coveredpicture.png
-ctl_none_f_2_con.mp3,ctl_none_f_2_tar.mp3,ctl_none_f_2_con.png,coveredpicture.png
-ctl_none_t_2_con.mp3,ctl_none_t_2_tar.mp3,ctl_none_t_2_con.png,coveredpicture.png
-ctl_nwin_f_1_con.mp3,ctl_nwin_f_1_tar.mp3,ctl_nwin_f_1_con.png,coveredpicture.png
-ctl_nwin_t_1_con.mp3,ctl_nwin_t_1_tar.mp3,ctl_nwin_t_1_con.png,coveredpicture.png
-tst_exi_tf_1_con.mp3,tst_exi_tf_1_tar.mp3,tst_exi_tf_1_con.png,coveredpicture.png
-tst_exi_tf_2_con.mp3,tst_exi_tf_2_tar.mp3,tst_exi_tf_2_con.png,coveredpicture.png
-tst_exi_tf_3_con.mp3,tst_exi_tf_3_tar.mp3,tst_exi_tf_3_con.png,coveredpicture.png
-tst_uni_tf_1_con.mp3,tst_uni_tf_1_tar.mp3,tst_uni_tf_1_con.png,coveredpicture.png
-tst_uni_tf_2_con.mp3,tst_uni_tf_2_tar.mp3,tst_uni_tf_2_con.png,coveredpicture.png
-tst_uni_tf_3_con.mp3,tst_uni_tf_3_tar.mp3,tst_uni_tf_3_con.png,coveredpicture.png
-tst_uni_tf_4_con.mp3,tst_uni_tf_4_tar.mp3,tst_uni_tf_4_con.png,coveredpicture.png
+item,condition,response,ContextPicture,ContextAudio,TargetPicture,TargetAudio,Animal,ContextSentence,Sentence
+1,tstuni1,tf,tst_uni_tf_1_con.png,tst_uni_tf_1_con.mp3,tst_uni_tf_1_tar.png,tst_uni_tf_1_tar.mp3,bears,"During the morning race, these three bears did really well and in the end one of them won. I thought they would do the same later in the day as well but...","None of the bears won the afternoon race."
+2,tstexi2,tf,tst_exi_tf_2_con.png,tst_exi_tf_2_con.mp3,tst_exi_tf_2_tar.png,tst_exi_tf_2_tar.mp3,pandas,"During the morning race, these three pandas did really well and in the end one of them won. I thought they would do the same later in the day as well but...","None of the pandas won the afternoon race."
+3,ctlnwin1,t,ctl_nwin_t_1_con.png,ctl_nwin_t_1_con.mp3,ctl_nwin_t_1_tar.png,ctl_nwin_t_1_tar.mp3,zebras,"During the morning race, these three zebras did really well and in the end one of them won. I thought they would do the same later in the day as well but...","None of the zebras won the afternoon race."
+4,ctlnwin2,f,ctl_nwin_f_1_con.png,ctl_nwin_f_1_con.mp3,ctl_nwin_f_1_tar.png,ctl_nwin_f_1_tar.mp3,rabbits,"During the morning race, these three rabbits did really well and in the end one of them won. I thought they would do the same later in the day as well but...","None of the rabbits won the afternoon race."
+5,ctlnone1,f,ctl_none_f_1_con.png,ctl_none_f_1_con.mp3,ctl_none_f_1_tar.png,ctl_none_f_1_tar.mp3,cats,"During the morning race, these three cats were at home, and one of them was on the couch. I thought they would do the same later in the day as well but...","None of the cats were on the couch during the afternoon race."
+6,ctlnone2,t,ctl_none_t_2_con.png,ctl_none_t_2_con.mp3,ctl_none_t_2_tar.png,ctl_none_t_2_tar.mp3,pigs,"During the morning race, these three pigs were at home, and one of them was on the couch. I thought they would do the same later in the day as well but...","None of the pigs were on the couch during the afternoon race."
+7,ctlpart1,t,ctl_part_t_1_con.png,ctl_part_t_1_con.mp3,ctl_part_t_1_tar.png,ctl_part_t_1_tar.mp3,monkeys,"During the morning race, these three monkeys ran in the race. I thought they would do the same later in the day as well but...","None of the monkeys ran in the afternoon race."
+8,ctlpart1,f,ctl_part_f_1_con.png,ctl_part_f_1_con.mp3,ctl_part_f_1_tar.png,ctl_part_f_1_tar.mp3,hippos,"During the morning race, these three hippos ran in the race. I thought they would do the same later in the day as well but...","None of the hippos ran in the afternoon race."

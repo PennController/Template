@@ -1,2 +1,2 @@
-# Template
-Find templates for PennController experiments
+# Visual World - Covered Box
+Select which image depicts the audio description

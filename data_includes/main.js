@@ -9,36 +9,31 @@ PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 // Show the consent first, then intro page with instructions
 // then all the 'experiment' trials in a random order, then send the results and finally show the trial labeled 'end'
 
-Sequence( "consent", "intro", "practice1", "practice2", "transition", randomize("experiments"), SendResults() , "end" )
+Sequence( "consent", "intro", "practice1", "practice2", "transition", randomize("experiment"), SendResults() , "end" )
 
 // Showing consent, generated throughout html file that you can edit 
-
 newTrial ( "consent" ,
-    defaultText
-        .print()
-    ,
     newHtml("consent", "consent.html")
         .print()
     ,
-    newButton("<p>I have read the consent statement and I agree to continue.")
+    newButton("<p>I have read the consent statement and I agree to continue.</p>")
         .center()
         .print()
         .wait()
 )
 
 // Showing page with instructions, generated throughout html file that you can edit 
-
 newTrial( "intro" ,
     newImage("animals.png")
-        .center()
-        .size(450,300)
-        .print()
-    ,
-    newHtml("intro_page", "intro.html")
+        .size(350,200)
         .center()
         .print()
     ,
-    newText("<p>When you understand these instructions, please click Continue.")
+    newHtml("intro.html")
+        .center()
+        .print()
+    ,
+    newText("<p>When you understand these instructions, please click Continue.</p>")
         .center()
         .print()
     ,
@@ -48,236 +43,75 @@ newTrial( "intro" ,
         .wait()
 )
 
-// Showing practice page, where user will be notified if he did the task correctly
-// This serves to ensure that user understands what is he instructed to do 
+//
+// See practice.js for the practice items
+//
 
-newTrial( "practice1" ,
-     newImage("image1", "ctl_train_t_1_con.png")
-        .center()
-        .size(450,300)
-    ,
-    newCanvas("first", 1400, 200)
-        .center()
-        .add(450 , 0 , getImage("image1") )
-        .print()
-    ,
-    
-// Showing explanations using tooltips
-
-    newTooltip("This picture shows what happened during the morning race. PRESS SPACE.")
-    .key(32)
-    .position("top left")
-    .frame()
-    .print(getImage("image1") )
-    .css( "transform" , "translate(100%, calc(100% + 320px))" )
-    .wait()
-    ,
-    newTooltip("This animal fell over. He didn't finish the race! PRESS SPACE.")
-    .key(32)
-    .position("top left")
-    .frame()
-    .print(getImage("image1") )
-    .css( "transform" , "translate(calc(100% + 75px), calc(100% + 140px))" )
-    .wait()
-    ,
-    newTooltip("This is the finish line. The animals past this line finished the race! PRESS SPACE.")
-    .key(32)
-    .position("top left")
-    .frame()
-    .print(getImage("image1") )
-    .css( "transform" , "translate(calc(100% + 160px), calc(100% + 230px))" )
-    .wait()
-    ,
-    newTooltip("These animals stayed at home. They didn't take part in the race! PRESS SPACE.")
-    .key(32)
-    .position("top left")
-    .frame()
-    .print(getImage("image1") )
-    .css( "transform" , "translate(calc(100% + 380px), calc(100% + 220px))" )
-    .wait()
-    ,
-    
-// Putting audio of the experiment
-
-    newAudio("audio1", "ctl_train_t_1_con.mp3")
-    .play()
-    ,
-    getAudio("audio1")
-    .wait()
-    ,
-    getCanvas("first")
-    .remove()
-    ,
-    newImage("image2", "coveredpicture.png")
-        .size(450,300)
-    ,
-    newCanvas("second", 1400, 200)
-        .center()
-        .add(250  , 0 , getImage("image1") )
-        .add(700 , 0 , getImage("image2") )
-        .add( "center at 475" , 320 , newText("F").bold() )
-        .add( "center at 925" , 320 , newText("J").bold() )
-        .print()
-    ,
-    newAudio("audio2", "ctl_train_t_1_tar.mp3")
-    .play()
-    ,
-    getAudio("audio2")
-    .wait()
-    ,
-    newTooltip("Now simply press F if you think what you heard was describing the situation in the visible picture. Press SPACE to continue. ")
-    .key(32)
-    .position("bottom center")
-    .frame()
-    .print(getImage("image1"))
-    .wait()
-    ,
-    newTooltip("or J if you think it was describing the situation hidden behind the black layer. Press SPACE to continue. ")
-    .key(32)
-    .position("bottom center")
-    .frame()
-    .print(getImage("image2"))
-    .wait()
-    ,
-    
-// Adding selector for choosing picture
-
-    newSelector()
-    .add( getImage("image1") , getImage("image2"))
-    .disableClicks()
-    .keys("F", "J")
-    .log()
-    .wait()
-    .test.selected(getImage("image1"))
-    .success(newText("Right! The sentence described the VISIBLE picture; there was no cat in the race. Press any key to continue.").italic().print())
-    .failure(newText("Wrong! The sentence described the VISIBLE picture; there was no cat in the race. Press any key to continue.").color("red").print())
-    ,
-    getCanvas("second").remove()
-    ,
-    newKey(" ").wait()
-)
-
-// Showing practice page, where user will be notified if he did the task correctly
-// This serves to ensure that user understands what is he instructed to do, but with less instructions than practice 1 
-
-newTrial( "practice2" ,
-     newImage("image1", "ctl_train_f_1_con.png")
-        .center()
-        .size(450,300)
-    ,
-    newCanvas("first", 1400, 200)
-        .center()
-        .add(450 , 0 , getImage("image1") )
-        .print()
-    ,
-    newAudio("audio1", "ctl_train_f_1_con.mp3")
-    .play()
-    ,
-    getAudio("audio1")
-    .wait()
-    ,
-    getCanvas("first")
-    .remove()
-    ,
-    newImage("image2", "coveredpicture.png")
-        .size(450,300)
-    ,
-    newCanvas("second", 1400, 200)
-        .center()
-        .add(250  , 0 , getImage("image1") )
-        .add(700 , 0 , getImage("image2") )
-        .add( "center at 475" , 320 , newText("F").bold() )
-        .add( "center at 925" , 320 , newText("J").bold() )
-        .print()
-    ,
-    newAudio("audio2", "ctl_train_f_1_tar.mp3")
-    .play()
-    ,
-    getAudio("audio2")
-    .wait()
-    ,
-    newSelector()
-    .add( getImage("image1") , getImage("image2"))
-    .disableClicks()
-    .keys("F", "J")
-    .log()
-    .wait()
-    .test.selected(getImage("image1"))
-    .success(newText("Wrong! The sentence described the COVERED picture; there was one donkey in the race in the visible picture. Press any key to continue.").color("red").print())
-    .failure(newText("Right! The sentence described the COVERED picture; there was one donkey in the race in the visible picture. Press any key to continue.").italic().print())
-    ,
-    getCanvas("second").remove()
-    ,
-    newKey(" ").wait()
-)
 
 // Transition to the experiment, where no feedback will be given
-
 newTrial( "transition" ,
-    newText("<p>Great! Now let's start the actual experiment.")
+    newText("<p>Great! Now let's start the actual experiment.</p>")
         .center()
         .print()
     ,
-    newButton("<p>Continue.")
+    newButton("<p>Continue.</p>")
         .center()
         .print()
         .wait()
 )
 
 
-// Starting the experiment, by using data from csv file we made previously, and template we used for practices
-
-Template ("data.csv",
-row => newTrial("experiments",
-    newImage("image1", row.firstimage)
-        .center()
-        .size(450,300)
+// All the images will be 450px*300px, 
+// and Selector elements will have a 2px purple border
+Header(
+    defaultImage.size(450,300)
     ,
-    newCanvas("first", 1400, 200)
+    defaultSelector.frame("solid 2px purple")
+)
+
+// The core of the experiment, using data from a csv file we made previously
+Template("data.csv",
+row => newTrial("experiment",
+    newImage("contextPicture", row.ContextPicture)
         .center()
-        .add(450 , 0 , getImage("image1") )
         .print()
     ,
-    newAudio("audio1", row.firstaudio)
-    .play()
+    newAudio("contextAudio", row.ContextAudio)
+        .play()
+        .wait()
     ,
-    getAudio("audio1")
-    .wait()
+    getImage("contextPicture")
+        .remove()
     ,
-    getCanvas("first")
-    .remove()
-    ,
-    newImage("image2", row.secondimage)
-        .size(450,300)
-    ,
-    newCanvas("second", 1400, 200)
+    newCanvas("container", 900, 340)
         .center()
-        .add(250  , 0 , getImage("image1") )
-        .add(700 , 0 , getImage("image2") )
-        .add( "center at 475" , 320 , newText("F").bold() )
-        .add( "center at 925" , 320 , newText("J").bold() )
+        .add(  0 , 0 , newImage("visible", row.TargetPicture) )
+        .add(450 , 0 , newImage("covered", "coveredpicture.png") )
+        .add( "center at 225px" , 320 , newText("F").bold() )
+        .add( "center at 675px" , 320 , newText("J").bold() )
         .print()
     ,
-    newAudio("audio2", row.secondaudio)
-    .play()
+    newAudio("targetAudio", row.TargetAudio)
+        .play()
     ,
-    getAudio("audio2")
-    .wait()
-    ,
-    
-// Adding selector for choosing picture, with the keys F and J logging user's selection
-
+    // Adding selector for choosing picture, with the keys F and J logging user's selection
     newSelector()
-    .add( getImage("image1") , getImage("image2"))
-    .disableClicks()
-    .keys("F", "J")
-    .log()
-    .wait()
+        .add( getImage("visible") , getImage("covered"))
+        .disableClicks()
+        .keys("F", "J")
+        .log()
+        .once()
+        .wait()
+    ,
+    getAudio("targetAudio")
+        .wait("first")
   )
-  // Logging which images were shown because the experiemnt is randomized
-  .log( "FirstImage"     , row.firstimage    )
-  .log( "SecondImage"   , row.secondimage  ))
-  
+  // Logging item, condition and response because the experiment is randomized
+  .log( "condition" , row.condition )
+  .log( "item"      , row.item )
+  .log( "response"  , row.response )
+)
+
 
 // The end of the experiment
 newTrial("end",
@@ -285,11 +119,12 @@ newTrial("end",
         .center()
         .print()
     ,
+    // This is a dummy link, it won't actually validate submissions; use the link provided by your pooling platform
     newText("<p><a href='https://www.pcibex.net/' target='_blank'>Click here to validate your submission</a></p>")
         .center()
         .print()
     ,
-    newTimer(1)
-        .wait()
+    // Wait on this page forever
+    newButton().wait()
 )
 .setOption("countsForProgressBar",false)
