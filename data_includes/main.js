@@ -66,9 +66,7 @@ Template( "data.csv" ,
             .wait()
         ,
         getText("word2").remove()
-        ,
-        getKey("answerTarget").disable()
-        ,
+        ,        
         newAudio("post_target", row.posttarget)
             .log("play","end")     // Logging when it starts and ends playing
             .play()
@@ -77,6 +75,8 @@ Template( "data.csv" ,
         getText("Instructions").remove()
         ,
         newText("Press SPACE to continue")
+        ,
+        getCanvas("wordstoshow").remove()
         ,
         newKey(" ").wait()
     )
