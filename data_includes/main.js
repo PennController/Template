@@ -21,41 +21,43 @@ newTrial( "welcome" ,
 
 Template( "data.csv" , 
     row => PennController( "test" ,
-        defaultText.center().print()
+        defaultText
+        .center()
+        .print()
         ,
-        newTimer(row.time1).callback(
-            newText("word1",row.word1)
-            ,
-            newText("Instructions", "Press F if what you heard is a word, J otherwise")
-            ,
-            newKey("answerPrime", "FJ").log().wait()
-            ,
-            getText("word1").remove()
-            ,
-            getText("Instructions").remove()
-        ).start()
+        newText("Instructions", "WORD: Press <b>F</b> &nbsp &nbsp &nbsp NOT A WORD: Press <b>J</b> <br> ")
+        .print()
+        ,
+        newCanvas("wordtoshow", 200, 20)
+        .center()
+        .css( "border" , "solid 3px black" )
+        .print()
+        ,
+        newTimer(row.time1)
+        .callback(
+         getCanvas("wordtoshow").add("center at 50%", "middle at 50%", newText("word1",row.word1))
+        ,
+        newKey("answerPrime", "FJ").log().wait()
+        ,
+        getText("word1").remove()
+        )
+        .start()
         ,
         newAudio("preamble", row.preamble)
             .log("play","end")     // Logging when it starts and ends playing
             .play()
             .wait()
         ,
-        getText("Instructions").remove()
-        ,
         getText("word1").remove()
         ,
         getKey("answerPrime").disable()
         ,
         newTimer(row.time2).callback(
-            newText("word2",row.word2)
-            ,
-            getText("Instructions").print()
-            ,
-            newKey("answerTarget", "FJ").log().wait()
-            ,
-            getText("word2").remove()
-            ,
-            getText("Instructions").remove()
+        getCanvas("wordtoshow").add("center at 50%", "middle at 50%", newText("word2",row.word2))
+        ,
+        newKey("answerPrime", "FJ").log().wait()
+        ,
+        getText("word2").remove()
         ).start()
         ,
         newAudio("target", row.target)
@@ -65,14 +67,14 @@ Template( "data.csv" ,
         ,
         getText("word2").remove()
         ,
-        getText("Instructions").remove()
-        ,
         getKey("answerTarget").disable()
         ,
         newAudio("post_target", row.posttarget)
             .log("play","end")     // Logging when it starts and ends playing
             .play()
             .wait()
+        ,
+        getText("Instructions").remove()
         ,
         newText("Press SPACE to continue")
         ,
