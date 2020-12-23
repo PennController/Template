@@ -3,3 +3,21 @@
     left: 50vw !important;
     transform: translateX(-50%);
 }
+
+.Text-container{
+    font-size:  2em;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.Tooltip {
+    min-width: 50vw;
+    width: max-content;
+    max-width: 80vw;
+    border-radius: 10px;
+    padding: 10px !important;
+    box-shadow: black 0px 0px 5px 0px;
+}
+.Tooltip a {
+    font-style: italic;
+}
