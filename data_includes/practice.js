@@ -7,25 +7,28 @@ newTrial( "practice1" ,
         .print()
     ,
     defaultTooltip
-        .key(32)
+        .key(32,"no click")
         .position("top left")
         .frame()
         .size(500,"auto")
     ,
     // Showing explanations using tooltips
-    newTooltip("This picture shows what happened during the morning race. PRESS SPACE.")
+    newTooltip("guide", "This picture shows what happened during the morning race.", "Press Space")
         .print( 0, 320, getCanvas("contextContainer") )
         .wait()
     ,
-    newTooltip("This animal fell over. He didn't finish the race! PRESS SPACE.")
+    getTooltip("guide")
+        .text("This animal fell over. He didn't finish the race!")
         .print( 75,140, getCanvas("contextContainer") )
         .wait()
     ,
-    newTooltip("This is the finish line. The animals past this line finished the race! PRESS SPACE.")
+    getTooltip("guide")
+        .text("This is the finish line. The animals past this line finished the race!")
         .print( 160,230, getCanvas("contextContainer") )
         .wait()
     ,
-    newTooltip("These animals stayed at home. They didn't take part in the race! PRESS SPACE.")
+    getTooltip("guide")
+        .text("These animals stayed at home. They didn't take part in the race!")
         .print( 380,220, getCanvas("contextContainer") )
         .wait()
     ,
@@ -49,13 +52,13 @@ newTrial( "practice1" ,
         .play()
         .wait()
     ,
-    newTooltip("Now simply press F if you think what you heard was describing the situation in the visible picture. Press SPACE to continue. ")
+    newTooltip("press", "Now simply press F if you think what you heard was describing the situation in the visible picture...", "Press Space to continue")
         .position("bottom center")
         .print(getImage("visible"))
         .wait()
     ,
-    newTooltip("or J if you think it was describing the situation hidden behind the black layer. Press SPACE to continue. ")
-        .position("bottom center")
+    getTooltip("press")
+        .text("...or J if you think it was describing the situation hidden behind the black layer.")
         .print(getImage("covered"))
         .wait()
     ,

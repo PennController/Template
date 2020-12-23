@@ -1,14 +1,9 @@
-// Find a tutorial and the list of availalbe elements at:
-// https://www.pcibex.net/documentation/
+PennController.ResetPrefix(null); // Shorten command names (keep this line here))
 
-PennController.ResetPrefix(null) // Shorten command names (keep this line here)
-
-// To turn off debugger uncomment the next line
-// DebugOff()
+// DebugOff()   // Uncomment this line only when you are 100% done designing your experiment
 
 // Show the consent first, then intro page with instructions
 // then all the 'experiment' trials in a random order, then send the results and finally show the trial labeled 'end'
-
 Sequence( "consent", "intro", "practice1", "practice2", "transition", randomize("experiment"), SendResults() , "end" )
 
 // Showing consent, generated throughout html file that you can edit 
@@ -16,7 +11,7 @@ newTrial ( "consent" ,
     newHtml("consent", "consent.html")
         .print()
     ,
-    newButton("<p>I have read the consent statement and I agree to continue.</p>")
+    newButton("I have read the consent statement and I agree to continue.")
         .center()
         .print()
         .wait()
@@ -33,11 +28,11 @@ newTrial( "intro" ,
         .center()
         .print()
     ,
-    newText("<p>When you understand these instructions, please click Continue.</p>")
+    newText("When you understand these instructions, please click Continue.")
         .center()
         .print()
     ,
-    newButton("<p>Continue.")
+    newButton("Continue.")
         .center()
         .print()
         .wait()
@@ -71,7 +66,7 @@ Header(
 
 // The core of the experiment, using data from a csv file we made previously
 Template("data.csv",
-row => newTrial("experiment",
+  row => newTrial("experiment",
     newImage("contextPicture", row.ContextPicture)
         .center()
         .print()
