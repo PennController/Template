@@ -65,7 +65,7 @@ row => newTrial("experiment",
     ,
     newMediaRecorder("recorder")
     .log()
-    .print()
+    .record()
     ,
     newImage("scene", row.scene)
         .center()
