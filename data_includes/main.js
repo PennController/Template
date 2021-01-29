@@ -73,11 +73,9 @@ row => newTrial("experiment",
         .print()
     ,
     newTimer("tothenext3", 6000)
-    .start()
-    .wait()
-    ,
-    getMediaRecorder("recorder")
-        .remove()
+        .callback( getMediaRecorder("recorder").stop() )
+        .start()
+        .wait()
     ,
     getText("instruct")
         .remove()
