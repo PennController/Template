@@ -1,6 +1,9 @@
 // Find a tutorial and the list of availalbe elements at:
 // https://penncontroller.github.io/
 
+//Initiate Recorder
+InitiateRecorder("https://dummy.url/").label("consent")
+
 PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 
 // To turn off debugger uncomment the next line
