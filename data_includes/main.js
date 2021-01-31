@@ -1,25 +1,26 @@
 // Find a tutorial and the list of availalbe elements at:
 // https://penncontroller.github.io/
+PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 
 //Initiate Recorder
 InitiateRecorder("https://dummy.url/").label("consent")
-
-PennController.ResetPrefix(null) // Shorten command names (keep this line here)
 
 // To turn off debugger uncomment the next line
 // DebugOff()
 
 // Show the consent first, then intro page with instructions
-// then all the 'experiment' trials in a random order, then send the results and finally show the trial labeled 'end'
+// then all the 'experiment' trials in a random https://farm.pcibex.net/r/Dfqkjy/experiment.html?test=trueorder, then send the results and finally show the trial labeled 'end'
 
 Sequence( "consent", randomize("experiment"), SendResults() , "end" )
 
 // Edit consent.html file to write the consent
 newTrial ( "consent" ,
     newHtml("consent", "consent.html")
+        .css("text-align", "center")
         .print()
     ,
     newButton("<p>I have read the consent statement and I agree to continue.</p>")
+        .css("text-align", "center")
         .center()
         .print()
         .wait()
@@ -64,9 +65,10 @@ row => newTrial("experiment",
         .remove()
     ,
     newText("instruct","Tell us what you see on your screen")
+        .center()
         .print()
     ,
-    newMediaRecorder("recorder")
+    newMediaRecorder("consent")
     .log()
     .record()
     ,
@@ -76,7 +78,7 @@ row => newTrial("experiment",
         .print()
     ,
     newTimer("tothenext3", 6000)
-        .callback( getMediaRecorder("recorder").stop() )
+        .callback( getMediaRecorder("consent").stop() )
         .start()
         .wait()
     ,
@@ -87,6 +89,7 @@ row => newTrial("experiment",
         .remove()
     ,
     newButton("continue", "Click here to continue")
+    .center()
     .print()
     .wait()
   )
@@ -97,15 +100,3 @@ row => newTrial("experiment",
 // The end of the experiment
 newTrial("end",
     newText("Thank you for your participation!")
-        .center()
-        .print()
-    ,
-    // This is a dummy link, it won't actually validate submissions; use the link provided by your pooling platform
-    newText("<p><a href='https://www.pcibex.net/' target='_blank'>Click here to validate your submission</a></p>")
-        .center()
-        .print()
-    ,
-    // Wait on this page forever
-    newButton().wait()
-)
-.setOption("countsForProgressBar",false)
